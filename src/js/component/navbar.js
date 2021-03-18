@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 	return (
 		<nav className="navbar mb-3 d-flex justify-content-center" id="nav2">
-			<div className="d-flex justify-content-center" id="nav">
+			<div className="d-flex justify-content-center" id="ancho_general">
 				<Link to="/">
 					<img
 						id="logo"
