@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
 
-export function CardsCharacters() {
+export function CardsPlanets() {
 	const w_card = {
 		width: "18rem",
 		height: "425px"
@@ -22,12 +22,12 @@ export function CardsCharacters() {
 	return (
 		<div className="row d-flex justify-content-center">
 			<div id="ancho_general" className="row d-flex justify-content-center">
-				<h1 id="titles"> Characters </h1>
+				<h1 id="titles"> Planets </h1>
 			</div>
 			<div id="ancho_general" className="row d-flex justify-content-center">
 				<div className="card m-1" style={w_card}>
 					<img
-						src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
+						src="https://www.slashgear.com/wp-content/uploads/2013/07/hubble_hd_189733b_gas_giant_glass_planet.png"
 						className="card-img-top"
 						alt="..."
 					/>
@@ -50,7 +50,7 @@ export function CardsCharacters() {
 				</div>
 				<div className="card m-1" style={w_card}>
 					<img
-						src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
+						src="https://www.slashgear.com/wp-content/uploads/2013/07/hubble_hd_189733b_gas_giant_glass_planet.png"
 						className="card-img-top"
 						alt="..."
 					/>
@@ -73,7 +73,7 @@ export function CardsCharacters() {
 				</div>
 				<div className="card m-1" style={w_card}>
 					<img
-						src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
+						src="https://www.slashgear.com/wp-content/uploads/2013/07/hubble_hd_189733b_gas_giant_glass_planet.png"
 						className="card-img-top"
 						alt="..."
 					/>

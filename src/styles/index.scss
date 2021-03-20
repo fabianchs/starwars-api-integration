@@ -1,6 +1,11 @@
 /* 
     General Styles
 */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+
 #logo{
     width: 100px;
 }
@@ -14,5 +19,8 @@
     color: black;
 }
 #titles{
-    font-family: 'Press Start 2P', cursive;
+    //font-family: 'Press Start 2P', cursive;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 80px;
+    color: tomato;
 }
