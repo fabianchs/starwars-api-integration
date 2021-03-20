@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 let cargados = false;
 let contador = 0;
 let cont_personaje = 1;
-let div_cards = [""];
+let div_cards = [];
+let imagen = "https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale";
 export function CardsCharacters() {
 	const w_card = {
 		width: "18rem",
@@ -23,8 +24,8 @@ export function CardsCharacters() {
 
 	async function personajes() {
 		let result = "";
-
-		await fetch("https://www.swapi.tech/api/people/3/")
+		let url = "https://www.swapi.tech/api/people/" + cont_personaje + "/";
+		await fetch(url)
 			.then(res => res.json())
 			.then(data => {
 				console.log(data.result.properties);
@@ -44,39 +45,36 @@ export function CardsCharacters() {
 		//pass
 	}
 
+	const taskItems = div_cards.map((item, index) => item);
+
 	function agregar() {
-		div_cards.concat(
-			(
-				<div key={contador} className="card m-1" style={w_card}>
-					<img
-						src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
-						className="card-img-top"
-						alt="..."
-					/>
-					<div className="card-body">
-						<h5 className="card-title">{personaje.name}</h5>
-						<p className="card-text">Gender: {personaje.gender} </p>
-						<p className="card-text">Hair Color: {personaje.hair_color} </p>
-						<p className="card-text">Eye Color: {personaje.eye_color} </p>
-						<div className="row d-flex justify-content-center">
-							<a href="#" className="col-6  btn btn-primary">
-								Learn more!
-							</a>
-							<div className="col-3 d-flex justify-content-start">
-								<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
-									<i id={corazonColor} className="fas fa-heart" />
-								</button>
-							</div>
+		div_cards.push(
+			<div key={contador} className="card m-1" style={w_card}>
+				<img
+					src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
+					className="card-img-top"
+					alt="..."
+				/>
+				<div className="card-body">
+					<h5 className="card-title">{personaje.name}</h5>
+					<p className="card-text">Gender: {personaje.gender} </p>
+					<p className="card-text">Hair Color: {personaje.hair_color} </p>
+					<p className="card-text">Eye Color: {personaje.eye_color} </p>
+					<div className="row d-flex justify-content-center">
+						<a href="#" className="col-6  btn btn-primary">
+							Learn more!
+						</a>
+						<div className="col-3 d-flex justify-content-start">
+							<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
+								<i id={corazonColor} className="fas fa-heart" />
+							</button>
 						</div>
 					</div>
 				</div>
-			).toString
+			</div>
 		);
 		contador++;
 		console.log(div_cards);
-		if (contador == 8) {
-			cargados = true;
-		}
 		console.log("pasa por agregar");
 	}
 
@@ -96,16 +94,13 @@ export function CardsCharacters() {
 	return (
 		<div className="row d-flex justify-content-center">
 			{div_cards}
+			{taskItems}
 			<div id="ancho_general" className="row d-flex justify-content-center">
 				<h1 id="titles"> Characters </h1>
 			</div>
 			<div id="ancho_general" className="row d-flex justify-content-center">
 				<div className="card m-1" style={w_card}>
-					<img
-						src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
-						className="card-img-top"
-						alt="..."
-					/>
+					<img src={imagen} className="card-img-top" alt="..." />
 					<div className="card-body">
 						<h5 className="card-title">Card title</h5>
 						<p className="card-text">Gender: {personaje.hair_color} </p>
