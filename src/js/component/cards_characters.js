@@ -47,9 +47,9 @@ export function CardsCharacters() {
 
 	const taskItems = div_cards.map((item, index) => item);
 
-	function agregar() {
+	async function agregar() {
 		div_cards.push(
-			<div key={contador} className="card m-1 card-block" style={w_card}>
+			<div key={contador} className="card m-1" style={w_card}>
 				<img
 					src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
 					className="card-img-top"
@@ -93,10 +93,13 @@ export function CardsCharacters() {
 
 	return (
 		<div className="row d-flex justify-content-center">
-			<div id="ancho_general" className="row d-flex justify-content-center ">
+			<div id="ancho_general" className="row d-flex justify-content-center">
 				<h1 id="titles"> Characters </h1>
+				<div className="spinner-border" role="status">
+					<span className="visually-hidden">Loading...</span>
+				</div>
 			</div>
-			<div id="ancho_general" className=" row flex-row flex-nowrap scrolling-wrapper ">
+			<div id="anchogeneral" className="row d-flex justify-content-center">
 				{taskItems}
 			</div>
 		</div>
