@@ -49,7 +49,7 @@ export function CardsCharacters() {
 
 	function agregar() {
 		div_cards.push(
-			<div key={contador} className="card m-1" style={w_card}>
+			<div key={contador} className="card m-1 card-block" style={w_card}>
 				<img
 					src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
 					className="card-img-top"
@@ -93,77 +93,11 @@ export function CardsCharacters() {
 
 	return (
 		<div className="row d-flex justify-content-center">
-			{div_cards}
-			{taskItems}
-			<div id="ancho_general" className="row d-flex justify-content-center">
+			<div id="ancho_general" className="row d-flex justify-content-center ">
 				<h1 id="titles"> Characters </h1>
 			</div>
-			<div id="ancho_general" className="row d-flex justify-content-center">
-				<div className="card m-1" style={w_card}>
-					<img src={imagen} className="card-img-top" alt="..." />
-					<div className="card-body">
-						<h5 className="card-title">Card title</h5>
-						<p className="card-text">Gender: {personaje.hair_color} </p>
-						<p className="card-text">Hair Color: </p>
-						<p className="card-text">Eye Color:</p>
-						<div className="row d-flex justify-content-center">
-							<a href="#" className="col-6  btn btn-primary">
-								Learn more!
-							</a>
-							<div className="col-3 d-flex justify-content-start">
-								<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
-									<i id={corazonColor} className="fas fa-heart" />
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="card m-1" style={w_card}>
-					<img
-						src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
-						className="card-img-top"
-						alt="..."
-					/>
-					<div className="card-body">
-						<h5 className="card-title">Card title</h5>
-						<p className="card-text">Some quick example text to build</p>
-						<p className="card-text">Some quick example text to build</p>
-						<p className="card-text">Some quick example text to build</p>
-						<div className="row d-flex justify-content-center">
-							<a href="#" className="col-6  btn btn-primary">
-								Learn more!
-							</a>
-							<div className="col-3 d-flex justify-content-start">
-								<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
-									<i id={corazonColor} className="fas fa-heart" />
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="card m-1" style={w_card}>
-					<img
-						src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
-						className="card-img-top"
-						alt="..."
-					/>
-					<div className="card-body">
-						<h5 className="card-title">Card title</h5>
-						<p className="card-text">Some quick example text to build</p>
-						<p className="card-text">Some quick example text to build</p>
-						<p className="card-text">Some quick example text to build</p>
-						<div className="row d-flex justify-content-center">
-							<a href="#" className="col-6  btn btn-primary">
-								Learn more!
-							</a>
-							<div className="col-3 d-flex justify-content-start">
-								<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
-									<i id={corazonColor} className="fas fa-heart" />
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div id="ancho_general" className=" row flex-row flex-nowrap scrolling-wrapper ">
+				{taskItems}
 			</div>
 		</div>
 	);
