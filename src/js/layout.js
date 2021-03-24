@@ -24,7 +24,9 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
-					<CardsCharacters />
+					<div className="row flex-row flex-nowrap overflow-auto">
+						<CardsCharacters />
+					</div>
 					<CardsPlanets />
 					<Switch>
 						<Route exact path="/">

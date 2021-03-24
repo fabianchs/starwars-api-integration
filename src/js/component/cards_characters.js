@@ -1,11 +1,13 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
-let cargados = false;
+let cargados = true;
 let contador = 0;
 let cont_personaje = 1;
 let div_cards = [];
 let imagen = "https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale";
+
 export function CardsCharacters() {
 	const w_card = {
 		width: "18rem",
@@ -18,29 +20,32 @@ export function CardsCharacters() {
 		eye_color: "charging"
 	};
 
+	const { store, actions } = useContext(Context);
+
+	actions.obtainCharacters();
+
 	const cont_interno = cont_personaje.toString();
 
 	const [personaje, setPersonajes] = useState(previos);
 
 	async function personajes() {
 		let result = "";
-		let url = "https://www.swapi.tech/api/people/" + cont_personaje + "/";
+		let url = "https://www.swapi.tech/api/people/";
 		await fetch(url)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data.result.properties);
-				setPersonajes(data.result.properties);
+				console.log(data.results[0].url);
+				setPersonajes(data.result);
 				cont_personaje++;
-				agregar();
 			})
 			.catch(err => {
 				console.error(err);
-				cargados == true;
 			});
 	}
+	//personajes();
 
 	if (cargados == false) {
-		personajes();
+		//personajes();
 	} else {
 		//pass
 	}
@@ -99,7 +104,7 @@ export function CardsCharacters() {
 					<span className="visually-hidden">Loading...</span>
 				</div>
 			</div>
-			<div id="anchogeneral" className="row d-flex justify-content-center">
+			<div id="anchogeneral" className="row d-flex justify-content-center row flex-row flex-nowrap overflow-auto">
 				{taskItems}
 			</div>
 		</div>

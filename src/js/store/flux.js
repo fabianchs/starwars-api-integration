@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			personajes: [],
+			personajes_detalle: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -23,6 +25,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+			},
+			obtainCharacters: () => {
+				let result = "";
+				let url = "https://www.swapi.tech/api/people/";
+
+				fetch(url)
+					.then(res => res.json())
+					.then(data => {
+						//personajes.push(data.results);
+						setStore({ personajes: data.results });
+						//console.log(personajes);
+					})
+					.catch(err => {
+						console.error(err);
+					});
+				console.log("flux por aca xd");
 			},
 			changeColor: (index, color) => {
 				//get the store
