@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			personajes: [],
-			personajes_detalle: [],
+			planetas: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -21,10 +21,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			//loadSomeData: () => {
-			/**
-                fetch().then().then(data => setStore({ "foo": data.bar }))
-            */
 
 			fetchPeople: async () => {
 				const URL = "https://swapi.dev/api/people/";
@@ -36,45 +32,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				const response = await fetch(URL, CONFIG);
 				const json = await response.json();
-
-				//console.log(">>DATA>>", json);
 				setStore({ personajes: json.results });
+			},
+			fetchPlanets: async () => {
+				const URL = "https://swapi.dev/api/planets/";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
+				setStore({ planetas: json.results });
 			}
 		},
-		// obtainCharacters: () => {
-		// 	let url = "https://www.swapi.tech/api/people/";
-		// 	let cargardetalles = [];
-		// 	fetch(url)
-		// 		.then(res => res.json())
-		// 		.then(data => {
-		// 			//personajes.push(data.results);
-		// 			setStore({ personajes: data.results });
 
-		// 			data.results.map((item, index) => {
-		// 				//console.log(item.url);
-
-		// 				fetch(item.url)
-		// 					.then(res => res.json())
-		// 					.then(data => {
-		// 						cargardetalles.push(data.result.properties);
-		// 						console.log(data.result.properties);
-		// 					})
-		// 					.catch(err => {
-		// 						console.error(err);
-		// 					});
-		// 			});
-
-		// 			//console.log(personajes);
-		// 		})
-		// 		.catch(err => {
-		// 			console.error(err);
-		// 		});
-
-		// 	setStore({ personajes_detalle: cargardetalles });
-
-		// 	//const taskItems = div_cards.map((item, index) => item);
-		// 	console.log("flux por aca xd");
-		// },
 		changeColor: (index, color) => {
 			//get the store
 			const store = getStore();
