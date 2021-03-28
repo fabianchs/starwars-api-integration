@@ -23,8 +23,8 @@ export function CardsCharacters() {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
-		actions.obtainCharacters();
-		//console.log(store.personajes);
+		actions.fetchPeople();
+		//console.log(store.personajes.results);
 	}, []);
 
 	//console.log(store.personajes_detalle);
@@ -68,7 +68,7 @@ export function CardsCharacters() {
 
 	//const taskItems = div_cards.map((item, index) => item);
 
-	const taskItems = store.personajes_detalle.map((item, index) => (
+	const taskItems = store.personajes.map((item, index) => (
 		<div key={index} className="card m-1" style={w_card}>
 			<img
 				src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
