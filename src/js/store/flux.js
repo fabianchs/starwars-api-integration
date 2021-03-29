@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			personajes: [],
 			planetas: [],
+			favoritos: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -45,6 +46,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const response = await fetch(URL, CONFIG);
 				const json = await response.json();
 				setStore({ planetas: json.results });
+			},
+			agrFav: (type, index) => {
+				//con type se refiere a si es planeta o personaje, así una única función se encarga de manejar los favoritos
+				if (type == "character") {
+					//tipo={name: "", tipo:"", indice: ""}
+					lista = store.favoritos;
+					lista.push("personaje");
+				} else if (type == "planet") {
+					lista = store.favoritos;
+					lista.push("personaje");
+				}
+				setStore({ favoritos: lista });
 			}
 		},
 

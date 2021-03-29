@@ -1,6 +1,7 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 let imagen = "https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale";
 
@@ -43,9 +44,9 @@ export function CardsCharacters() {
 				<p className="card-text">Hair Color: {item.hair_color} </p>
 				<p className="card-text">Eye Color: {item.eye_color} </p>
 				<div className="row d-flex justify-content-center">
-					<a href="#" className="col-6  btn btn-primary">
+					<Link to="/single/1" className="btn btn-outline-primary text-primary">
 						Learn more!
-					</a>
+					</Link>
 					<div className="col-3 d-flex justify-content-start">
 						<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
 							<i id={corazonColor} className="fas fa-heart" />
