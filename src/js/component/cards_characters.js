@@ -31,7 +31,7 @@ export function CardsCharacters() {
 		}
 	}
 
-	const taskItems = store.personajes.map((item, index) => (
+	const characterCards = store.personajes.map((item, index) => (
 		<div key={index} className="card m-1" style={w_card}>
 			<img
 				src="https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale"
@@ -63,7 +63,7 @@ export function CardsCharacters() {
 				<h1 id="titles"> Characters </h1>
 			</div>
 			<div id="anchogeneral" className="row d-flex justify-content-center">
-				{taskItems}
+				{characterCards}
 			</div>
 		</div>
 	);
