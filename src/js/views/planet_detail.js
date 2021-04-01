@@ -27,7 +27,7 @@ export function PlanetDetail() {
 				<div className="row">
 					<div className="col-6">
 						<img
-							src="https://media.revistagq.com/photos/604b2f499fc97c95e82c1c14/master/pass/2101913.jpg"
+							src="https://image.winudf.com/v2/image/Y29tLmhkd2FsbHBhcGVyLnBsYW5ldGhkd2FsbHBhcGVyc19zY3JlZW5fMV9tMGVhOHFsNA/screen-1.jpg?fakeurl=1&type=.jpg"
 							className="card-img-top"
 							alt="..."
 						/>

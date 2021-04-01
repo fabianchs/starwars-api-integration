@@ -40,7 +40,7 @@ export function CardsPlanets() {
 				<h5 className="card-title">{item.name}</h5>
 				<p className="card-text">Population: {item.population} </p>
 				<p className="card-text">Terrain: {item.terrain} </p>
-				<div className="row d-flex justify-content-center">
+				<div className="row d-flex justify-content-center align-text-bottom">
 					<Link
 						to={"/planet_detail/" + index}
 						className="btn btn-outline-primary text-primary"
