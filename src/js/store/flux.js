@@ -5,18 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetas: [],
 			favoritos: [],
 			id_detail: [],
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			personaje_detalle: [],
+			planeta_Detalle: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -60,8 +50,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				setStore({ favoritos: lista });
 			},
+
+			obtainCharacterDetail: async id => {
+				const str_id = (id + 1).toString();
+				const URL = "https://swapi.dev/api/people/" + str_id + "/";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
+				console.log(json);
+				setStore({ personaje_detalle: json });
+			},
+
 			changeDetail_id: id => {
 				let update = id;
+				console.log(update);
 				setStore({ id_detail: update });
 			}
 		},

@@ -44,7 +44,12 @@ export function CardsCharacters() {
 				<p className="card-text">Hair Color: {item.hair_color} </p>
 				<p className="card-text">Eye Color: {item.eye_color} </p>
 				<div className="row d-flex justify-content-center">
-					<Link to="/character_detail" className="btn btn-outline-primary text-primary">
+					<Link
+						to="/character_detail"
+						className="btn btn-outline-primary text-primary"
+						onClick={() => {
+							actions.changeDetail_id(index);
+						}}>
 						Learn more!
 					</Link>
 					<div className="col-3 d-flex justify-content-start">
