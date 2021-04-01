@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favoritos: [],
 			id_detail: [],
 			personaje_detalle: [],
-			planeta_Detalle: []
+			planeta_detalle: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -64,6 +64,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const json = await response.json();
 				console.log(json);
 				setStore({ personaje_detalle: json });
+			},
+			restoreCharPlan: () => {
+				const base = [];
+				setStore({ personaje_detalle: base });
+				setStore({ planeta_detalle: base });
 			},
 
 			changeDetail_id: id => {

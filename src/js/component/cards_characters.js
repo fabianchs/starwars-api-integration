@@ -45,7 +45,7 @@ export function CardsCharacters() {
 				<p className="card-text">Eye Color: {item.eye_color} </p>
 				<div className="row d-flex justify-content-center">
 					<Link
-						to="/character_detail"
+						to={"/character_detail/" + index}
 						className="btn btn-outline-primary text-primary"
 						onClick={() => {
 							actions.changeDetail_id(index);
