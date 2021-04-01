@@ -1,6 +1,7 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export function CardsPlanets() {
 	const w_card = {
@@ -40,9 +41,14 @@ export function CardsPlanets() {
 				<p className="card-text">Population: {item.population} </p>
 				<p className="card-text">Terrain: {item.terrain} </p>
 				<div className="row d-flex justify-content-center">
-					<a href="#" className="col-6  btn btn-primary">
+					<Link
+						to={"/planet_detail/" + index}
+						className="btn btn-outline-primary text-primary"
+						onClick={() => {
+							actions.changeDetail_id(index);
+						}}>
 						Learn more!
-					</a>
+					</Link>
 					<div className="col-3 d-flex justify-content-start">
 						<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
 							<i id={corazonColor} className="fas fa-heart" />

@@ -65,6 +65,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(json);
 				setStore({ personaje_detalle: json });
 			},
+			obtainPlanetDetail: async id => {
+				const str_id = (id + 1).toString();
+				const URL = "https://swapi.dev/api/planets/" + str_id + "/";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
+				console.log(json);
+				setStore({ planeta_detalle: json });
+			},
 			restoreCharPlan: () => {
 				const base = [];
 				setStore({ personaje_detalle: base });

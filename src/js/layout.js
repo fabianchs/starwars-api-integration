@@ -6,6 +6,7 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { CharacterDetail } from "./views/character_detail";
+import { PlanetDetail } from "./views/planet_detail";
 
 import injectContext from "./store/appContext";
 
@@ -27,9 +28,7 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/">
-							<div className="row flex-row flex-nowrap overflow-auto">
-								<CardsCharacters />
-							</div>
+							<CardsCharacters />
 							<CardsPlanets />
 						</Route>
 						<Route exact path="/demo">
@@ -37,6 +36,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/character_detail/:id">
 							<CharacterDetail />
+						</Route>
+						<Route exact path="/planet_detail/:id">
+							<PlanetDetail />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
