@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			planetas: [],
 			favoritos: [],
+			id_detail: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -58,6 +59,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					lista.push("personaje");
 				}
 				setStore({ favoritos: lista });
+			},
+			changeDetail_id: id => {
+				let update = id;
+				setStore({ id_detail: update });
 			}
 		},
 

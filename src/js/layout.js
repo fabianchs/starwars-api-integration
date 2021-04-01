@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
+import { CharacterDetail } from "./views/character_detail";
 
 import injectContext from "./store/appContext";
 
@@ -24,19 +25,18 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
-					<div className="row flex-row flex-nowrap overflow-auto">
-						<CardsCharacters />
-					</div>
-					<CardsPlanets />
 					<Switch>
 						<Route exact path="/">
-							<Home />
+							<div className="row flex-row flex-nowrap overflow-auto">
+								<CardsCharacters />
+							</div>
+							<CardsPlanets />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/character_detail">
+							<CharacterDetail />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
