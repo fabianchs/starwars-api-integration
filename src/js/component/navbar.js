@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Image, DropdownButton, Dropdown } from "react-bootstrap";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar mb-3 d-flex justify-content-center" id="nav2">
 			<div className="d-flex justify-content-center" id="ancho_general">
@@ -12,33 +15,24 @@ export const Navbar = () => {
 					/>
 				</Link>
 				<div className="ml-auto">
-					<div className="dropdown">
-						<button
-							className="btn btn-secondary dropdown-toggle"
-							type="button"
-							id="dropdownMenuButton1"
-							data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Favorites
-						</button>
-						<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li>
-								<a className="dropdown-item" href="#">
-									Action
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-							</li>
-						</ul>
-					</div>
+					<DropdownButton
+						className="bg-secondary"
+						id="dropdown-basic-button"
+						title={`Favorites ${store.favoritos.length}`}>
+						{store.favoritos.map((item, index) => {
+							return (
+								<Dropdown.Item key={index} href="#/action-1">
+									<button
+										type="button"
+										className="btn btn-light"
+										onClick={() => actions.delFav(store.favoritos, item)}>
+										<i className="fas fa-trash float-start"></i>
+										{"  " + item}
+									</button>
+								</Dropdown.Item>
+							);
+						})}
+					</DropdownButton>
 				</div>
 			</div>
 		</nav>

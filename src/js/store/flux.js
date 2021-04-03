@@ -3,8 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			personajes: [],
 			planetas: [],
-			favoritos_personaje: [],
-			favoritos_planeta: [],
+			favoritos: [],
 			id_detail: [],
 			personaje_detalle: [],
 			planeta_detalle: []
@@ -39,18 +38,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const json = await response.json();
 				setStore({ planetas: json.results });
 			},
-			agrFav: (type, index) => {
+			agrFav: (index, listaFav, nombre) => {
 				//con type se refiere a si es planeta o personaje, así una única función se encarga de manejar los favoritos
-				if (type == "character") {
-					//tipo={name: "", tipo:"", indice: ""}
-					lista = store.favoritos;
-					setStore({ favoritos_personaje: lista });
-					lista.push("personaje");
-				} else if (type == "planet") {
-					lista = store.favoritos;
-					setStore({ favoritos_personaje: lista });
-					lista.push("personaje");
+				let lista = listaFav;
+				let ingresar = true;
+
+				listaFav.map((item, index) => {
+					if (listaFav[index] == nombre) {
+						ingresar = false; //Si encuentra el nombre en la lista, desactiva la variable que permite añadir el nombre a la lista
+						//pass
+					}
+				});
+
+				if (ingresar == true) {
+					lista.push(nombre); //Si la variable es true, permite añadir nuevos elementos
+					//así se evita la duplicidad de nombres en la lista
 				}
+				setStore({ favoritos_personaje: lista });
+			},
+			delFav: (listaFav, nombre) => {
+				let borrar = false;
+				let posicion = 0;
+				let lista = listaFav;
+
+				listaFav.map((item, index) => {
+					if (listaFav[index] == nombre) {
+						lista.splice(index, 1);
+					}
+				});
+				setStore({ favoritos_personaje: lista });
 			},
 
 			obtainCharacterDetail: async id => {

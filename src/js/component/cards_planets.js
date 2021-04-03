@@ -19,16 +19,6 @@ export function CardsPlanets() {
 	const [favoritoColor, setfavoritoColor] = useState("btn btn-light");
 	const [corazonColor, setcorazonColor] = useState("corazon2");
 
-	function cambiaColor() {
-		if (favoritoColor == "btn btn-light") {
-			setfavoritoColor("btn btn-warning");
-			setcorazonColor("corazon");
-		} else {
-			setfavoritoColor("btn btn-light");
-			setcorazonColor("corazon2");
-		}
-	}
-
 	const planetcards = store.planetas.map((item, index) => (
 		<div key={index} className="card m-1" style={w_card}>
 			<img
@@ -50,7 +40,10 @@ export function CardsPlanets() {
 						Learn more!
 					</Link>
 					<div className="col-3 d-flex justify-content-start">
-						<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
+						<button
+							type="button"
+							className={favoritoColor}
+							onClick={() => actions.agrFav(index, store.favoritos, item.name)}>
 							<i id={corazonColor} className="fas fa-heart" />
 						</button>
 					</div>
@@ -61,12 +54,10 @@ export function CardsPlanets() {
 
 	return (
 		<div className="row d-flex justify-content-center">
-			<div id="ancho_general" className="row d-flex justify-content-center">
+			<div className="row d-flex justify-content-center">
 				<h1 id="titles"> Planets </h1>
 			</div>
-			<div id="ancho_general" className="row d-flex justify-content-center">
-				{planetcards}
-			</div>
+			<div className="row d-flex justify-content-center">{planetcards}</div>
 		</div>
 	);
 }

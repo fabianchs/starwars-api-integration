@@ -53,7 +53,10 @@ export function CardsCharacters() {
 						Learn more!
 					</Link>
 					<div className="col-3 d-flex justify-content-start">
-						<button type="button" className={favoritoColor} onClick={() => cambiaColor()}>
+						<button
+							type="button"
+							className={favoritoColor}
+							onClick={() => actions.agrFav(index, store.favoritos, item.name)}>
 							<i id={corazonColor} className="fas fa-heart" />
 						</button>
 					</div>
@@ -67,7 +70,7 @@ export function CardsCharacters() {
 			<div id="ancho_general" className="row d-flex justify-content-center">
 				<h1 id="titles"> Characters </h1>
 			</div>
-			<div id="ancho_general" className="row flex-row flex-nowrap overflow-auto">
+			<div className="row flex-row flex-nowrap overflow-auto">
 				<div className="row d-flex justify-content-center">{characterCards}</div>
 			</div>
 		</div>
