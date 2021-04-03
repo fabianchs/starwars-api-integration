@@ -67,8 +67,8 @@ export function CardsCharacters() {
 			<div id="ancho_general" className="row d-flex justify-content-center">
 				<h1 id="titles"> Characters </h1>
 			</div>
-			<div id="anchogeneral" className="row d-flex justify-content-center">
-				{characterCards}
+			<div id="ancho_general" className="row flex-row flex-nowrap overflow-auto">
+				<div className="row d-flex justify-content-center">{characterCards}</div>
 			</div>
 		</div>
 	);

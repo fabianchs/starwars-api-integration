@@ -64,7 +64,7 @@ export function CardsPlanets() {
 			<div id="ancho_general" className="row d-flex justify-content-center">
 				<h1 id="titles"> Planets </h1>
 			</div>
-			<div id="anchogeneral" className="row d-flex justify-content-center">
+			<div id="ancho_general" className="row d-flex justify-content-center">
 				{planetcards}
 			</div>
 		</div>

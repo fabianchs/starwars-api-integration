@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			personajes: [],
 			planetas: [],
-			favoritos: [],
+			favoritos_personaje: [],
+			favoritos_planeta: [],
 			id_detail: [],
 			personaje_detalle: [],
 			planeta_detalle: []
@@ -43,12 +44,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (type == "character") {
 					//tipo={name: "", tipo:"", indice: ""}
 					lista = store.favoritos;
+					setStore({ favoritos_personaje: lista });
 					lista.push("personaje");
 				} else if (type == "planet") {
 					lista = store.favoritos;
+					setStore({ favoritos_personaje: lista });
 					lista.push("personaje");
 				}
-				setStore({ favoritos: lista });
 			},
 
 			obtainCharacterDetail: async id => {
