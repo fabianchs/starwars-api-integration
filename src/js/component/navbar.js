@@ -21,7 +21,7 @@ export const Navbar = () => {
 						title={`Favorites ${store.favoritos.length}`}>
 						{store.favoritos.map((item, index) => {
 							return (
-								<Dropdown.Item key={index} href="#/action-1">
+								<Dropdown.Item key={index}>
 									<button
 										type="button"
 										className="btn btn-light"
