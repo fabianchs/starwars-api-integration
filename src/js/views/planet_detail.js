@@ -6,12 +6,6 @@ import { Link } from "react-router-dom";
 export function PlanetDetail() {
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		//llamamos a flux, fetchPeople obtiene del API los personajes
-		//actions.restoreCharPlan(); //Con esto se evita que durante la carga del personaje, aparezcan los datos anteriores
-		//actions.obtainPlanetDetail(store.id_detail);
-	}, []);
-
 	return (
 		<div className="container d-flex justify-content-center">
 			<div className="jumbotron " id="ancho_general">

@@ -4,7 +4,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			planetas: [],
 			favoritos: [],
-			id_detail: [],
 			personaje_detalle: [],
 			planeta_detalle: []
 		},
@@ -69,74 +68,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ favoritos_personaje: lista });
 			},
 
-			obtainCharacterDetail: async id => {
-				// const str_id = (id + 1).toString();
-				// const URL = "https://swapi.dev/api/people/" + str_id + "/";
-				// const CONFIG = {
-				// 	method: "GET",
-				// 	headers: {
-				// 		"Content-type": "application/json"
-				// 	}
-				// };
-				// const response = await fetch(URL, CONFIG);
-				// const json = await response.json();
-				// console.log(json);
-				// setStore({ personaje_detalle: json });
-				//setStore({ personaje_detalle: "hola" });
-			},
-			obtainPlanetDetail: async id => {
-				// const str_id = (id + 1).toString();
-				// const URL = "https://swapi.dev/api/planets/" + str_id + "/";
-				// const CONFIG = {
-				// 	method: "GET",
-				// 	headers: {
-				// 		"Content-type": "application/json"
-				// 	}
-				// };
-				// const response = await fetch(URL, CONFIG);
-				// const json = await response.json();
-				// console.log(json);
-				// setStore({ planeta_detalle: json });
-			},
 			restoreCharPlan: () => {
 				const base = [];
 				setStore({ personaje_detalle: base });
 				setStore({ planeta_detalle: base });
 			},
 
-			changeDetail_id: (id, personajes) => {
-				let update = id;
+			changeChar_detail: personajes => {
 				let character = personajes;
-				//actions.changeDetail_id(index,store.personaje[index]);
-				console.log(update);
-				console.log(character);
+
 				setStore({ personaje_detalle: character });
-				setStore({ id_detail: update });
 			},
-			changePlanet_detail: (id, planetas) => {
-				let update = id;
+			changePlanet_detail: planetas => {
 				let planet = planetas;
-				//actions.changeDetail_id(index,store.personaje[index]);
-				console.log(update);
-				console.log(planet);
 				setStore({ planeta_detalle: planet });
-				setStore({ id_detail: update });
 			}
-		},
-
-		changeColor: (index, color) => {
-			//get the store
-			const store = getStore();
-
-			//we have to loop the entire demo array to look for the respective index
-			//and change its color
-			const demo = store.demo.map((elm, i) => {
-				if (i === index) elm.background = color;
-				return elm;
-			});
-
-			//reset the global store
-			setStore({ demo: demo });
 		}
 	};
 };
