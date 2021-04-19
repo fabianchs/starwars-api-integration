@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			fetchPeople: async () => {
-				const URL = "https://swapi.dev/api/people/";
+				const URL = "https://fabianchs-starwarsapi.herokuapp.com/people";
 				const CONFIG = {
 					method: "GET",
 					headers: {
@@ -24,10 +24,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				const response = await fetch(URL, CONFIG);
 				const json = await response.json();
-				setStore({ personajes: json.results });
+				setStore({ personajes: json });
 			},
 			fetchPlanets: async () => {
-				const URL = "https://swapi.dev/api/planets/";
+				const URL = "https://fabianchs-starwarsapi.herokuapp.com/planets";
 				const CONFIG = {
 					method: "GET",
 					headers: {
@@ -36,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				const response = await fetch(URL, CONFIG);
 				const json = await response.json();
-				setStore({ planetas: json.results });
+				setStore({ planetas: json });
 			},
 			agrFav: (index, listaFav, nombre) => {
 				//con type se refiere a si es planeta o personaje, así una única función se encarga de manejar los favoritos
