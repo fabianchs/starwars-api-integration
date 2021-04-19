@@ -12,11 +12,71 @@ export function CardsCharacters() {
 	};
 
 	const { store, actions } = useContext(Context);
+	let cont_personaje = 1;
+	let cargados = false;
 
 	useEffect(() => {
 		//llamamos a flux, fetchPeople obtiene del API los personajes
 		actions.fetchPeople();
+
+		//BORRAR DE AQUÍ PARA ABAJO
+
+		//BORRAR DE AQUÍ PARA ARRIBA
 	}, []);
+
+	//-------------------------
+	async function personajes() {
+		let result = "";
+		let url = "https://www.swapi.tech/api/people/" + cont_personaje + "/";
+
+		await fetch(url, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(res => res.json())
+			.then(data => {
+				let fetchUrl = "https://fabianchs-starwarsapi.herokuapp.com/newcharacter/";
+				console.log(data);
+				fetch(fetchUrl, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						birth_year: data.result.properties.birth_year,
+						eye_color: data.result.properties.eye_color,
+						gender: data.result.properties.gender,
+						hair_color: data.result.properties.hair_color,
+						height: data.result.properties.height,
+						homeworld: data.result.properties.homeworld,
+						mass: data.result.properties.mass,
+						name: data.result.properties.name,
+						skin_color: data.result.properties.skin_color,
+						created: data.result.properties.created,
+						edited: data.result.properties.edited,
+						url: data.result.properties.url
+					})
+				})
+					.then(res => {
+						console.log(res.json());
+						return res.json();
+					})
+					.then(data => console.log(data))
+					.catch(error => console.log("ERROR"));
+			})
+			.catch(err => {
+				console.error(err);
+				cargados == true;
+			});
+	}
+	if (cargados == false) {
+		cont_personaje++;
+		personajes();
+	}
+
+	//----------------------------
 
 	const [favoritoColor, setfavoritoColor] = useState("btn btn-light");
 	const [corazonColor, setcorazonColor] = useState("corazon2");
