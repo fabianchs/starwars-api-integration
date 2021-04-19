@@ -38,7 +38,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ planetas: json });
 			},
 			agrFav: (index, listaFav, nombre) => {
-				//con type se refiere a si es planeta o personaje, así una única función se encarga de manejar los favoritos
 				let lista = listaFav;
 				let ingresar = true;
 
@@ -50,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				if (ingresar == true) {
-					lista.push(nombre); //Si la variable es true, permite añadir nuevos elementos
+					lista.push(nombre); //Si la  variable es true, permite añadir nuevos elementos
 					//así se evita la duplicidad de nombres en la lista
 				}
 				setStore({ favoritos_personaje: lista });
