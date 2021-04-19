@@ -8,8 +8,9 @@ export function CharacterDetail() {
 
 	useEffect(() => {
 		//llamamos a flux, fetchPeople obtiene del API los personajes
-		actions.restoreCharPlan(); //Con esto se evita que durante la carga del personaje, aparezcan los datos anteriores
-		actions.obtainCharacterDetail(store.id_detail);
+		//actions.restoreCharPlan(); //Con esto se evita que durante la carga del personaje, aparezcan los datos anteriores
+		//actions.obtainCharacterDetail(store.id_detail);
+		console.log(store.personaje_detalle);
 	}, []);
 
 	return (
@@ -49,7 +50,7 @@ export function CharacterDetail() {
 						Birth Year
 					</div>
 					<div className="col-2 d-flex justify-content-center" id="little_titles">
-						Gender
+						Mass
 					</div>
 					<div className="col-2 d-flex justify-content-center" id="little_titles">
 						Height
@@ -64,7 +65,7 @@ export function CharacterDetail() {
 				<div className="row mt-3 pt-2">
 					<div className="col-2 d-flex justify-content-center">{store.personaje_detalle.name}</div>
 					<div className="col-2 d-flex justify-content-center">{store.personaje_detalle.birth_year}</div>
-					<div className="col-2 d-flex justify-content-center">{store.personaje_detalle.gender}</div>
+					<div className="col-2 d-flex justify-content-center">{store.personaje_detalle.mass}</div>
 					<div className="col-2 d-flex justify-content-center">{store.personaje_detalle.height}</div>
 					<div className="col-2 d-flex justify-content-center">{store.personaje_detalle.skin_color}</div>
 					<div className="col-2 d-flex justify-content-center">{store.personaje_detalle.eye_color}</div>

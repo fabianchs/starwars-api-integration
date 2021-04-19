@@ -35,7 +35,7 @@ export function CardsPlanets() {
 						to={"/planet_detail/" + index}
 						className="btn btn-outline-primary text-primary"
 						onClick={() => {
-							actions.changeDetail_id(index);
+							actions.changePlanet_detail(index, store.planetas[index]);
 						}}>
 						Learn more!
 					</Link>

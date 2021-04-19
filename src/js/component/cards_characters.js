@@ -50,7 +50,7 @@ export function CardsCharacters() {
 						to={"/character_detail/" + index}
 						className="btn btn-outline-primary text-primary"
 						onClick={() => {
-							actions.changeDetail_id(index);
+							actions.changeDetail_id(index, store.personajes[index]);
 						}}>
 						Learn more!
 					</Link>

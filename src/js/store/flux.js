@@ -70,32 +70,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			obtainCharacterDetail: async id => {
-				const str_id = (id + 1).toString();
-				const URL = "https://swapi.dev/api/people/" + str_id + "/";
-				const CONFIG = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
-					}
-				};
-				const response = await fetch(URL, CONFIG);
-				const json = await response.json();
-				console.log(json);
-				setStore({ personaje_detalle: json });
+				// const str_id = (id + 1).toString();
+				// const URL = "https://swapi.dev/api/people/" + str_id + "/";
+				// const CONFIG = {
+				// 	method: "GET",
+				// 	headers: {
+				// 		"Content-type": "application/json"
+				// 	}
+				// };
+				// const response = await fetch(URL, CONFIG);
+				// const json = await response.json();
+				// console.log(json);
+				// setStore({ personaje_detalle: json });
+				//setStore({ personaje_detalle: "hola" });
 			},
 			obtainPlanetDetail: async id => {
-				const str_id = (id + 1).toString();
-				const URL = "https://swapi.dev/api/planets/" + str_id + "/";
-				const CONFIG = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
-					}
-				};
-				const response = await fetch(URL, CONFIG);
-				const json = await response.json();
-				console.log(json);
-				setStore({ planeta_detalle: json });
+				// const str_id = (id + 1).toString();
+				// const URL = "https://swapi.dev/api/planets/" + str_id + "/";
+				// const CONFIG = {
+				// 	method: "GET",
+				// 	headers: {
+				// 		"Content-type": "application/json"
+				// 	}
+				// };
+				// const response = await fetch(URL, CONFIG);
+				// const json = await response.json();
+				// console.log(json);
+				// setStore({ planeta_detalle: json });
 			},
 			restoreCharPlan: () => {
 				const base = [];
@@ -103,9 +104,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ planeta_detalle: base });
 			},
 
-			changeDetail_id: id => {
+			changeDetail_id: (id, personajes) => {
 				let update = id;
+				let character = personajes;
+				//actions.changeDetail_id(index,store.personaje[index]);
 				console.log(update);
+				console.log(character);
+				setStore({ personaje_detalle: character });
+				setStore({ id_detail: update });
+			},
+			changePlanet_detail: (id, planetas) => {
+				let update = id;
+				let planet = planetas;
+				//actions.changeDetail_id(index,store.personaje[index]);
+				console.log(update);
+				console.log(planet);
+				setStore({ planeta_detalle: planet });
 				setStore({ id_detail: update });
 			}
 		},

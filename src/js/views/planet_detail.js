@@ -8,8 +8,8 @@ export function PlanetDetail() {
 
 	useEffect(() => {
 		//llamamos a flux, fetchPeople obtiene del API los personajes
-		actions.restoreCharPlan(); //Con esto se evita que durante la carga del personaje, aparezcan los datos anteriores
-		actions.obtainPlanetDetail(store.id_detail);
+		//actions.restoreCharPlan(); //Con esto se evita que durante la carga del personaje, aparezcan los datos anteriores
+		//actions.obtainPlanetDetail(store.id_detail);
 	}, []);
 
 	return (
