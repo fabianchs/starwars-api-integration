@@ -7,6 +7,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { CharacterDetail } from "./views/character_detail";
 import { PlanetDetail } from "./views/planet_detail";
+import { Login } from "./views/login";
 
 import injectContext from "./store/appContext";
 
@@ -27,6 +28,9 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
+						<Route exact path="/login">
+							<Login />
+						</Route>
 						<Route exact path="/">
 							<CardsCharacters />
 							<CardsPlanets />
