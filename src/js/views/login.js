@@ -8,6 +8,24 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 export function Login() {
 	const { store, actions } = useContext(Context);
 
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	let pass = "";
+	let ema_il = "";
+
+	function handleEmail(event) {
+		ema_il = event.target.value;
+	}
+	function handlePass(event) {
+		pass = event.target.value;
+	}
+
+	function sendData() {
+		console.log("Tu contraseña es: ", pass);
+		console.log("Tu email es: ", ema_il);
+	}
+
 	return (
 		<div className="d-flex justify-content-center mt-5">
 			<div className="bg-light border rounded rounded-3" id="ancho_form">
@@ -15,13 +33,25 @@ export function Login() {
 					<Form>
 						<FormGroup>
 							<Label for="exampleEmail">Email</Label>
-							<Input type="email" name="email" id="exampleEmail" placeholder="Correo electrónico" />
+							<Input
+								type="email"
+								name="email"
+								id="exampleEmail"
+								placeholder="Correo electrónico"
+								onChange={handleEmail}
+							/>
 						</FormGroup>
 						<FormGroup>
 							<Label for="examplePassword">Password</Label>
-							<Input type="password" name="password" id="examplePassword" placeholder="Contraseña" />
+							<Input
+								type="password"
+								name="password"
+								id="examplePassword"
+								placeholder="Contraseña"
+								onChange={handlePass}
+							/>
 						</FormGroup>
-						<Button>Enviar</Button>
+						<Button onClick={sendData}>Enviar</Button>
 					</Form>
 				</div>
 			</div>
