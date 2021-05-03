@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: null,
 			personajes: [],
 			planetas: [],
 			favoritos: [],
@@ -11,6 +12,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+
+			login: async (email, password) => {
+				const url = "https://3000-peach-piranha-ejl7w8sh.ws-us03.gitpod.io/token";
+
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				};
+
+				try {
+					const resp = await fetch(url, options);
+					if (resp.status !== 200) {
+						alert("Hubo un error desde flux");
+						return false;
+					}
+					const data = await resp.json();
+					sessionStorage.setItem("token", data.access_token);
+					setStore({ token: data.access_token });
+					return true;
+				} catch (error) {
+					console.error("Ha ocurrido un error");
+				}
 			},
 
 			fetchPeople: async () => {
