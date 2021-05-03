@@ -15,11 +15,36 @@ export function Login() {
 	let ema_il = "";
 
 	function handleEmail(event) {
-		ema_il = event.target.value;
+		setEmail(event.target.value);
 	}
 	function handlePass(event) {
-		pass = event.target.value;
+		setPassword(event.target.value);
 	}
+	const handleClick = () => {
+		const url = "https://3000-peach-piranha-ejl7w8sh.ws-us03.gitpod.io/token";
+
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				email: email,
+				password: password
+			})
+		};
+		fetch(url, options)
+			.then(resp => {
+				if (resp.status === 200) {
+					console.log(resp.json);
+					return resp.json();
+				} else console.log("No se ha obtenido una respuesta satisfactoria");
+			})
+			.then()
+			.catch(error => {
+				console.error("Hubo un error ;c", error);
+			});
+	};
 
 	function sendData() {
 		console.log("Tu contraseña es: ", pass);
@@ -38,6 +63,7 @@ export function Login() {
 								name="email"
 								id="exampleEmail"
 								placeholder="Correo electrónico"
+								value={email}
 								onChange={handleEmail}
 							/>
 						</FormGroup>
@@ -48,10 +74,11 @@ export function Login() {
 								name="password"
 								id="examplePassword"
 								placeholder="Contraseña"
+								value={password}
 								onChange={handlePass}
 							/>
 						</FormGroup>
-						<Button onClick={sendData}>Enviar</Button>
+						<Button onClick={handleClick}>Enviar</Button>
 					</Form>
 				</div>
 			</div>
