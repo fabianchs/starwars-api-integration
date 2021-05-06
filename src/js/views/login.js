@@ -21,13 +21,17 @@ export function Login() {
 	}
 	const handleClick = () => {
 		actions.login(email, password).then(() => {
-			History.push("/");
+			History.push("/intro");
 		});
 	};
+
+	if (store.token && store.token != "" && store.token != undefined) {
+		History.push("/intro");
+	}
 	return (
 		<div className="d-flex justify-content-center mt-5">
-			{token && token != "" && token != undefined ? (
-				"You are logged in with this token" + token
+			{store.token && store.token != "" && store.token != undefined ? (
+				History.push("/intro")
 			) : (
 				<div className="bg-light border rounded rounded-3" id="ancho_form">
 					<div className="p-2">
@@ -55,6 +59,9 @@ export function Login() {
 								/>
 							</FormGroup>
 							<Button onClick={handleClick}>Enviar</Button>
+							<p>
+								No tenés cuenta? <a href="/register">Regístrate</a>
+							</p>
 						</Form>
 					</div>
 				</div>

@@ -13,9 +13,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			synkTokenFromSessionStore: () => {
+				const token = sessionStorage.getItem("token");
+				if (token && token != "" && token != undefined) {
+					setStore({ token: token });
+				}
+			},
+			logout: () => {
+				sessionStorage.removeItem("token");
 
+				setStore({ token: null });
+			},
 			login: async (email, password) => {
-				const url = "https://3000-peach-piranha-ejl7w8sh.ws-us03.gitpod.io/token";
+				const url = "https://3000-lime-lungfish-k7vt09xa.ws-us03.gitpod.io/token";
 
 				const options = {
 					method: "POST",
