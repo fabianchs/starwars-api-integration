@@ -8,6 +8,7 @@ import { Single } from "./views/single";
 import { CharacterDetail } from "./views/character_detail";
 import { PlanetDetail } from "./views/planet_detail";
 import { Login } from "./views/login";
+import { Register } from "./views/register";
 
 import injectContext from "./store/appContext";
 
@@ -37,6 +38,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/register">
+							<Register />
 						</Route>
 						<Route exact path="/character_detail/:id">
 							<CharacterDetail />

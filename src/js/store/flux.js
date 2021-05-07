@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ token: null });
 			},
 			login: async (email, password) => {
-				const url = "https://3000-lime-lungfish-k7vt09xa.ws-us03.gitpod.io/token";
+				const url = "https://3000-blue-chameleon-iwrhsjn1.ws-us03.gitpod.io/token";
 
 				const options = {
 					method: "POST",
@@ -47,6 +47,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json();
 					sessionStorage.setItem("token", data.access_token);
 					setStore({ token: data.access_token });
+					return true;
+				} catch (error) {
+					console.error("Ha ocurrido un error");
+				}
+			},
+			register: async (email, password) => {
+				const url = "https://3000-blue-chameleon-iwrhsjn1.ws-us03.gitpod.io/register";
+
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				};
+
+				try {
+					const resp = await fetch(url, options);
+					if (resp.status !== 200) {
+						alert("Hubo un error");
+						return false;
+					}
+					const data = await resp.json();
 					return true;
 				} catch (error) {
 					console.error("Ha ocurrido un error");
