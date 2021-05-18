@@ -1,7 +1,7 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 let imagen = "https://specials-images.forbesimg.com/imageserve/5e160edc9318b800069388e8/960x0.jpg?fit=scale";
 
@@ -75,6 +75,7 @@ export function CardsCharacters() {
 			<div className="row flex-row flex-nowrap overflow-auto">
 				<div className="row d-flex justify-content-center">{characterCards}</div>
 			</div>
+			{store.stoken ? console.log("auth") : <Redirect to="/login" />}
 		</div>
 	);
 }
